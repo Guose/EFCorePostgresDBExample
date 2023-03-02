@@ -1,0 +1,13 @@
+bin/*
+obj/*
+
+*.json
+*.dll
+*.pdb
+*.props
+*.targets
+*.cache
+*.editorconfig
+*.vsidx
+.vs
+.vscode
