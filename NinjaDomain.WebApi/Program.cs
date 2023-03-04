@@ -1,8 +1,5 @@
-using LinqToDB.AspNet;
-using LinqToDB.AspNet.Logging;
-using LinqToDB.Configuration;
 using Microsoft.EntityFrameworkCore;
-using NinjaDomain.Data.Data;
+using NinjaDomain.WebApi.Data;
 
 namespace NinjaDomain.WebApi
 {
@@ -23,15 +20,11 @@ namespace NinjaDomain.WebApi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddDbContext<NinjaDbContext>(opt =>
-                                opt.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnection")));
+            builder.Services.AddEntityFrameworkNpgsql()
+                            .AddDbContext<NinjaDomainDbContext>(opt =>
+                                opt.UseNpgsql(builder.Configuration.GetConnectionString("SqlServerConnection")));
 
-            builder.Services.AddPooledDbContextFactory<NinjaDbContext>(cfg => cfg.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnection")));
-
-            builder.Services.AddLinqToDBContext<NinjaContext>((provider, options) =>
-            {
-                options.UsePostgreSQL(builder.Configuration.GetConnectionString("PostgresConnection")).UseDefaultLogging(provider);
-            });
+            // builder.Services.AddPooledDbContextFactory<NinjaDomainDbContext>(cfg => cfg.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnection")));
 
             var app = builder.Build();
 
@@ -42,13 +35,6 @@ namespace NinjaDomain.WebApi
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
-            }
-
-            using (IServiceScope scope = app.Services.CreateScope())
-            {
-                var dataConnection = scope.ServiceProvider.GetService<NinjaContext>();
-
-                //dataConnection.CreateTable<Command>();
             }
 
             app.UseHttpsRedirection();

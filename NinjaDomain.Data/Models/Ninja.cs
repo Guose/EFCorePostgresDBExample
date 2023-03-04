@@ -1,5 +1,4 @@
 ﻿using LinqToDB.Mapping;
-using NinjaDomain.Data.Interfaces;
 
 namespace NinjaDomain.Data.Models
 {

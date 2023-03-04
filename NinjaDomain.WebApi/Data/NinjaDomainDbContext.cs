@@ -1,17 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
-using NinjaDomain.Data.Models;
+using Microsoft.EntityFrameworkCore;
+using NinjaDomain.WebApi.Models;
 
-namespace NinjaDomain.Data.Data
+namespace NinjaDomain.WebApi.Data
 {
-    public class NinjaDbContext : DbContext
+    public class NinjaDomainDbContext : DbContext
     {
-        public NinjaDbContext(DbContextOptions<NinjaDbContext> options) : base(options) { }
+        public NinjaDomainDbContext(DbContextOptions<NinjaDomainDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Ninja>(entity => 
+            modelBuilder.Entity<NinjaModel>(entity => 
             {
                entity.HasOne(c => c.Clan) 
                     .WithMany(n => n.Ninjas!)
@@ -27,8 +27,8 @@ namespace NinjaDomain.Data.Data
             });
         }
 
-        public virtual DbSet<Ninja>? NinjasTbl { get; set; }
-        public virtual DbSet<Clan>? ClansTbl { get; set; }
-        public virtual DbSet<NinjaEquipment>? NinjaEquipmentTbl { get; set; }
+        public virtual DbSet<NinjaModel>? NinjasTbl { get; set; }
+        public virtual DbSet<ClanModel>? ClansTbl { get; set; }
+        public virtual DbSet<NinjaEquipmentModel>? NinjaEquipmentTbl { get; set; }
     }
 }

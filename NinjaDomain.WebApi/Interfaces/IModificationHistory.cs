@@ -1,4 +1,4 @@
-namespace NinjaDomain.Data.Interfaces
+namespace NinjaDomain.WebApi.Interfaces
 {
     public interface IModificationHistory
     {

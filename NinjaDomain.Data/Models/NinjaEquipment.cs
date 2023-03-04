@@ -1,7 +1,5 @@
 ﻿using LinqToDB.Mapping;
 using NinjaDomain.Data.Enums;
-using NinjaDomain.Data.Interfaces;
-using System.Security.Claims;
 
 namespace NinjaDomain.Data.Models
 {
