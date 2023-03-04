@@ -6,6 +6,9 @@ namespace NinjaDomain.WebApi.Models
     public class NinjaModel : BaseModel
     {
         [Column]
+        public int Age { get; set; }
+        
+        [Column]
         public string Name { get; set; }
 
         [Column]
