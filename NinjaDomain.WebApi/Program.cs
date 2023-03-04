@@ -22,7 +22,7 @@ namespace NinjaDomain.WebApi
 
             builder.Services.AddEntityFrameworkNpgsql()
                             .AddDbContext<NinjaDomainDbContext>(opt =>
-                                opt.UseNpgsql(builder.Configuration.GetConnectionString("SqlServerConnection")));
+                                opt.UseNpgsql(builder.Configuration.GetConnectionString("PostgresConnection")));
 
             // builder.Services.AddPooledDbContextFactory<NinjaDomainDbContext>(cfg => cfg.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnection")));
 

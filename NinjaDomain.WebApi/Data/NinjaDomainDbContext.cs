@@ -27,8 +27,8 @@ namespace NinjaDomain.WebApi.Data
             });
         }
 
-        public virtual DbSet<NinjaModel>? NinjasTbl { get; set; }
-        public virtual DbSet<ClanModel>? ClansTbl { get; set; }
-        public virtual DbSet<NinjaEquipmentModel>? NinjaEquipmentTbl { get; set; }
+        public virtual DbSet<NinjaModel>? Ninjas { get; set; }
+        public virtual DbSet<ClanModel>? Clans { get; set; }
+        public virtual DbSet<NinjaEquipmentModel>? NinjaEquipment { get; set; }
     }
 }
